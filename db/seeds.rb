@@ -10,8 +10,6 @@ puts "Cleaning DB"
 
 Cat.destroy_all
 
-
-
 50.times do
   url = "https://source.unsplash.com/collection/139386/1000x1000/?sig="
   cat = Cat.new (
@@ -27,4 +25,3 @@ Cat.destroy_all
 end
 
 puts "Cats created!"
-
