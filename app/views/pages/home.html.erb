@@ -2,14 +2,6 @@
   <div class="container">
     <h1>Rent my cat</h1>
     <p>Enjoy your free time with the most <strong>beautiful cats</strong> in town</p>
-
-    <%= simple_form_for @booking do |f| %>
-      <%= f.input :address %>
-      <%= f.input :start_date, as: :date, html5: true %>
-      <%= f.input :end_date, as: :date, html5: true %>
-      <%= f.button :submit, class: 'btn btn-dark' %>
-    <% end %>
-
-
+    <h2><%= link_to 'Search', '#', class:"btn btn-dark"%></p>
   </div>
 </div>
