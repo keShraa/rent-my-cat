@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Find the cats around you</h1>
+  <div class="row">
+    <ul class="list-unstyled col">
+      <% @cats.each do |cat| %>
+        <li class="jumbotron">
+          <h2><%= cat.name %></h2>
+          <p>
+            <small><%= cat.address %></small>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
