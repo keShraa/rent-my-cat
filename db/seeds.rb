@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-<<<<<<< HEAD
 puts "Cleaning DB"
 
 Cat.destroy_all
@@ -26,5 +25,3 @@ Cat.destroy_all
 end
 
 puts "Cats created!"
-=======
->>>>>>> 77de55cd89576262d32a9f15c8f67f7a940619f0
