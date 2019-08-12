@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .banner {
-  height: 100vh;
+  height: calc(100vh - 56px);
   padding: 150px 0;
   background-size: cover;
   background-position: center;

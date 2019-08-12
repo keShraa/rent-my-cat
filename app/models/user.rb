@@ -4,4 +4,8 @@ class User < ApplicationRecord
   validates :age, inclusion: { in: 18..100 }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :cats
+  has_many :booking, dependent: :destroy
+
 end
