@@ -15,4 +15,4 @@ class CreateCats < ActiveRecord::Migration[5.2]
   end
 end
 
-20190812135258
+
