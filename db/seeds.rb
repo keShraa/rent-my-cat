@@ -27,4 +27,3 @@ Cat.destroy_all
 end
 
 puts "Cats created!"
-
