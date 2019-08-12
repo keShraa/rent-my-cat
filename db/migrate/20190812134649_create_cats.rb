@@ -8,9 +8,11 @@ class CreateCats < ActiveRecord::Migration[5.2]
       t.string :breed
       t.integer :age
       t.integer :price_per_day
-      t.references :user_id, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
   end
 end
+
+20190812135258

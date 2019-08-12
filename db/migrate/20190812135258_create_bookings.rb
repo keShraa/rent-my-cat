@@ -4,10 +4,12 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.date :starting_date
       t.date :ending_date
       t.integer :total_price
-      t.references :user_id, foreign_key: true
-      t.references :cat_id, foreign_key: true
+      t.references :user, foreign_key: true
+      t.references :cat, foreign_key: true
 
       t.timestamps
     end
   end
 end
+
+
