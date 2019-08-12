@@ -5,7 +5,7 @@ class CreateCats < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :address
       t.string :photo
-      t.string :bread
+      t.string :breed
       t.integer :age
       t.integer :price_per_day
       t.references :user_id, foreign_key: true
