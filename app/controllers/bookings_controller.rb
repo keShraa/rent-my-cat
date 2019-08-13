@@ -3,6 +3,10 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def new
     @cat = Cat.find(params[:cat_id])
     @booking = Booking.new
@@ -15,13 +19,11 @@ class BookingsController < ApplicationController
     @booking.total_price = @cat.price_per_day * (@booking.ending_date - @booking.starting_date).to_i
     @booking.user = current_user
     if @booking.save
-      redirect_to cats_path(@booking)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
   end
-
-
 
   private
 
