@@ -5,6 +5,7 @@ class CatsController < ApplicationController
   def index
     @cats = policy_scope(Cat)
     @user = current_user
+    @cats = Cat.where(address: params[:cats][:address])
   end
 
   def show
