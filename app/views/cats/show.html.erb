@@ -1,0 +1,36 @@
+<div id="carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner carousel-cat" >
+    <div class="carousel-item active">
+      <%= cl_image_tag @cat.photo, class:"d-block w-100" %>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<div class="container mt-4">
+  <h1>Welcome to <%= @cat.name %>'s page <i class="fas fa-cat"></i></h1>
+
+  <div class="d-flex justify-content-between">
+    <h2>
+      <% if @cat.breed == 'Male' %>
+        <i class="fas fa-mars"></i>
+      <% else %>
+        <i class="fas fa-venus"></i>
+        <% end %>
+        <small><em><%= @cat.address %> - <%= @cat.age %> years old</em></small>
+    </h2>
+    <div class="d-flex align-items-end">
+      <h2><%= @cat.price_per_day %>€</h2>
+      <%= link_to 'Book this cat', bookings_path, class:'btn btn-dark mx-3' %>
+    </div>
+  </div>
+
+  <p><%= @cat.description %></p>
+</div>
