@@ -22,3 +22,12 @@
 .navbar-lewagon .btn-secondary {
   margin-left: 16px;
 }
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav p {
+  margin: 0;
+}

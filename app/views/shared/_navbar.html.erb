@@ -12,6 +12,9 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
+          <p>Welcome <%= current_user.first_name %> </p>
+        </li>
+        <li class="nav-item">
           <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-secondary") %>
         </li>
       <% else %>
