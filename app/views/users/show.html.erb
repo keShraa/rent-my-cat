@@ -1,28 +1,29 @@
-<div class="container">
-  <div class="d-flex justify-content-around align-items-end mt-4">
+<div class="container-fluid">
+  <div class="d-flex justify-content-around align-items-end mt-4 mb-14">
     <!-- @user.avatar -->
-    <%= cl_image_tag @user.photo, class:"avatar-large" %>
+    <div class="image">
+      <%= cl_image_tag @user.photo, class:"avatar-large" %>
+    </div>
 
-    <div class="d-flex flex-column w-50">
-    <div class="user-infos">
-      <ul class="list-unstyled">
-        <li><strong>First name</strong> <%= @user.first_name %></li>
-        <li><strong>Last name</strong> <%= @user.last_name %></li>
-        <li><strong>Address</strong> <%= @user.address %></li>
-        <li><strong>Age</strong> <%= @user.age %></li>
-        <li><strong>Email</strong> <%= @user.email %></li>
-      </ul>
-    </div>
-    <div class="align-self-end mt-2">
-      <%= link_to 'Add a cat', new_cat_path, class:'btn btn-ghost' %>
-      <%= link_to 'My bookings', bookings_path, class:'btn btn-ghost' %>
-      <%= link_to 'Edit my profile', edit_user_path, class:'btn btn-ghost' %>
-    </div>
+    <div class="d-flex flex-column">
+      <div class="user-infos w-40">
+        <ul class="list-unstyled">
+          <li><strong>First name</strong> <%= @user.first_name %></li>
+          <li><strong>Last name</strong> <%= @user.last_name %></li>
+          <li><strong>Address</strong> <%= @user.address %></li>
+          <li><strong>Age</strong> <%= @user.age %></li>
+          <li><strong>Email</strong> <%= @user.email %></li>
+        </ul>
+      </div>
+      <div class="d-flex justify-content-around mt-2">
+        <%= link_to 'Add a cat', new_cat_path, class:'btn btn-ghost' %>
+        <%= link_to 'My bookings', bookings_path, class:'btn btn-ghost' %>
+        <%= link_to 'Edit my profile', edit_user_path, class:'btn btn-ghost' %>
+      </div>
     </div>
   </div>
 
- <div class="container">
-  <h2 class="mt-3">Your cats</h2>
+ <div class="container mt-12">
 
   <div class="row">
     <% @cats.each do |cat| %>
