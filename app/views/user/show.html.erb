@@ -1,10 +1,18 @@
 <div class="container">
-  <h3>First name : <%= @user.first_name %></h3>
-  <h3>Last name : <%= @user.last_name %></h3>
-  <h3>Address : <%= @user.address %></h3>
-  <h3>age : <%= @user.age %></h3>
-  <h3>email : <%= @user.email %></h3>
-  <h1>Your cats</h1>
+  <div class="d-flex justify-content-around align-items-end mt-4">
+    <!-- @user.avatar -->
+    <%= cl_image_tag 'https://avatars3.githubusercontent.com/u/28786869?v=4', class:"avatar-large" %>
+
+    <ul class="list-unstyled">
+      <li><strong>First name</strong> <%= @user.first_name %></li>
+      <li><strong>Last name</strong> <%= @user.last_name %></li>
+      <li><strong>Address</strong> <%= @user.address %></li>
+      <li><strong>Age</strong> <%= @user.age %></li>
+      <li><strong>Email</strong> <%= @user.email %></li>
+    </ul>
+  </div>
+
+  <h1 class="mt-4">Your cats</h1>
   <div class="row">
 
     <% @cats.each do |cat| %>

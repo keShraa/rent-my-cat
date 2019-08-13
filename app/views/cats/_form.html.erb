@@ -2,6 +2,7 @@
   <%= f.input :name %>
   <%= f.input :breed, collection: Cat::BREEDS %>
   <%= f.input :age %>
+  <%= f.input :gender, collection: Cat::GENDER, as: :radio_buttons %>
   <%= f.input :address %>
   <%= f.input :price_per_day %>
   <%= f.input :description %>
