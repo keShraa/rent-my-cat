@@ -2,6 +2,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  opacity: 0.9;
 }
 
 .card-trip > img {
@@ -10,13 +11,17 @@
   object-fit: cover;
 }
 
-.card-trip a {
+.card-link a {
   color: #202020;
 }
 
-.card-trip a:hover {
+.card-link a:hover {
   text-decoration: none;
-  color: #CCCCCC;
+}
+
+.card-trip:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+  opacity: 1;
 }
 
 .card-trip h2 {

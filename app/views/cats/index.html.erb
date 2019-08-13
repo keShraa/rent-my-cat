@@ -3,25 +3,28 @@
   <div class="row">
 
     <% @cats.each do |cat| %>
-      <div class="col-sm-12 col-md-8 col-lg-6">
+      <div class="col-sm-12 col-md-8 col-lg-6 card-link">
+        <%= link_to cat_path(cat) do %>
         <div class="card-trip mb-4">
           <%= cl_image_tag cat.photo %>
-            <div class="card-trip-infos">
-
-              <div>
-                <%= link_to cat_path(cat) do %>
-                  <h2><%= cat.name %></h2>
-                <% end %>
-                <p>
-                  <%= cat.address %> - <%= cat.age %> years old<hr>
-                  <%= cat.description %>
-                </p>
+            <div class="card-trip-infos d-flex flex-column">
+              <div class="w-100">
+                  <h2><%= cat.name %>
+                  <% if cat.gender == 'Male' %>
+                    <i class="fas fa-mars"></i>
+                  <% else %>
+                    <i class="fas fa-venus"></i>
+                  <% end %></h2>
+                <p><%= cat.address %> - <%= cat.age %> years old</p>
               </div>
-
-              <h3 class="card-trip-pricing"><%= cat.price_per_day %>€</h3>
+              <div class="card-description d-flex justify-content-between mt-2">
+                <%= cat.description %>
+                <h3 class="card-trip-pricing d-flex align-items-end"><%= cat.price_per_day %>€</h3>
+              </div>
             </div>
         </div>
       </div>
+      <% end %>
     <% end %>
 
   </div>
