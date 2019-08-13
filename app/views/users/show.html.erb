@@ -1,1 +1,33 @@
-<%= @user.first_name %>
+<div class="container">
+  <h3>First name : <%= @user.first_name %></h3>
+  <h3>Last name : <%= @user.last_name %></h3>
+  <h3>Address : <%= @user.address %></h3>
+  <h3>age : <%= @user.age %></h3>
+  <h3>email : <%= @user.email %></h3>
+  <h1>Your cats</h1>
+  <div class="row">
+
+    <% @cats.each do |cat| %>
+      <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="card-trip mb-4">
+          <%= cl_image_tag cat.photo %>
+            <div class="card-trip-infos">
+
+              <div>
+                <%= link_to cat_path(cat) do %>
+                  <h2><%= cat.name %></h2>
+                <% end %>
+                <p>
+                  <%= cat.address %> - <%= cat.age %> years old<hr>
+                  <%= cat.description %>
+                </p>
+              </div>
+
+              <h3 class="card-trip-pricing"><%= cat.price_per_day %>€</h3>
+            </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
