@@ -11,8 +11,8 @@
   <div class="form-group card-form">
     <%= simple_form_for :cats, url: cats_path, method: "GET" do |f| %>
       <%= f.input :address, collection: Cat::CITY, :label => "Where do you want to rent a cat ?" %>
-      <%= f.input :starting_date, as: :date, class:'form-group date' %>
-      <%= f.input :ending_date, as: :date, class:'form-group date'%>
+      <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
       <%= f.submit "Search", class: "btn btn-primary" %>
     <% end %>
   </div>
