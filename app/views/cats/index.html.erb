@@ -1,7 +1,9 @@
 <div class="container">
-  <h1>Find the cats around you</h1>
-  <div class="row">
+  <h1 class="mt-3">Find the cats around you</h1>
 
+  <p class="mb-5" style="opacity: 0.5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, asperiores. Praesentium nobis qui corporis, reiciendis delectus cupiditate velit id, optio, maiores inventore aspernatur magnam nostrum atque magni sint officia. Dolorum?</p>
+
+  <div class="row">
     <% @cats.each do |cat| %>
       <div class="col-sm-12 col-md-8 col-lg-6 card-link">
         <%= link_to cat_path(cat) do %>
@@ -17,7 +19,7 @@
                   <% end %></h2>
                 <p><%= cat.address %> - <%= cat.age %> years old</p>
               </div>
-              <div class="card-description d-flex justify-content-between mt-2">
+              <div class="d-flex justify-content-between mt-2">
                 <%= cat.description %>
                 <h3 class="card-trip-pricing d-flex align-items-end"><%= cat.price_per_day %>€</h3>
               </div>

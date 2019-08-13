@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :age, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  mount_uploader :photo, PhotoUploader
 
   has_many :cats
   has_many :booking, dependent: :destroy

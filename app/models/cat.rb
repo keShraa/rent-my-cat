@@ -3,7 +3,9 @@ class Cat < ApplicationRecord
    "Persian", "Ragdoll", "Abyssinian", "Oriental Shorthair", "Sphynx", "Devon Rex",
    "British shorthair", "Himalayen", "Ocicat", "Somali", "Javanais"].sort
 
-   GENDER = ["Male", "Female"]
+  GENDER = ["Male", "Female"]
+
+  CITY = ["Bordeaux", "Paris", "Lille", "Lyon", "Marseille", "Toulouse", "Dijon", "Strasbourg", "Brest", "Montpellier"].sort
 
   has_many :booking, dependent: :destroy
   belongs_to :user
