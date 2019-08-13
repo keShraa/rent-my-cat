@@ -7,17 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Cleaning DB..."
+Cat.destroy_all
+User.destroy_all
+Booking.destroy_all
 
-users = []
 
-25.times do
+10.times do
   user = User.new(email: Faker::Internet.email, password: "password")
   user.save!
 end
 
-Cat.destroy_all
 
-50.times do
+20.times do
   url = "https://source.unsplash.com/collection/139386/1000x1000/?sig="
   cat = Cat.new(
     name: Faker::Creature::Cat.name,
