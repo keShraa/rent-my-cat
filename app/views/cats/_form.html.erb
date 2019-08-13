@@ -1,12 +1,14 @@
-<%= simple_form_for [@user, @cat] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :breed, collection: Cat::BREEDS %>
-  <%= f.input :age %>
-  <%= f.input :gender, collection: Cat::GENDER, as: :radio_buttons %>
-  <%= f.input :address, collection: Cat::CITY %>
-  <%= f.input :price_per_day %>
-  <%= f.input :description %>
-  <%= f.input :photo %>
-  <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit "Add a cat", class: "btn btn-primary " %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@user, @cat] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :breed, collection: Cat::BREEDS %>
+    <%= f.input :age %>
+    <%= f.input :gender, collection: Cat::GENDER, as: :radio_buttons %>
+    <%= f.input :address %>
+    <%= f.input :price_per_day %>
+    <%= f.input :description %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit "Add a cat", class: "btn btn-dark " %>
+  <% end %>
+</div>
