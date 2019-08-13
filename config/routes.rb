@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :bookings, only: [:index, :create]
   resources :user do
-    resources :cats
+    resources :cats, only: [:index]
   end
+
+  resources :cats
 
   devise_for :users
   root to: 'pages#home'
