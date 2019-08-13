@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :bookings, only: [:index, :create]
-  resources :user do
-    resources :cats, only: [:index, :show, :create]
+  resources :bookings, only: [:index, :show]
+  resources :cats do
+    resources :bookings, only: [:new, :create]
   end
-
-  resources :cats
+  resources :users, only: [:show, :edit]
 
   devise_for :users
   root to: 'pages#home'
