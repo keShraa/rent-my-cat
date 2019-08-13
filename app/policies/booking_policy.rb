@@ -4,4 +4,16 @@ class BookingPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def show?
+    record.user == user || record.cat.user == user
+  end
+
+  def create?
+    true
+  end
+
+  def new?
+    create?
+  end
 end
