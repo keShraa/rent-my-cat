@@ -1,2 +1,5 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<% @bookings.each do |booking| %>
+  <div class="container">
+    <h3>Booking du <%= "#{booking.starting_date} au #{booking.ending_date}, avec le chat #{booking.cat.name}" %></h3>
+  </div>
+<% end %>
