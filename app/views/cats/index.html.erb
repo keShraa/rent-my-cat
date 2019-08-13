@@ -3,8 +3,7 @@
   <div class="row">
     <ul class="list-unstyled col">
       <% @cats.each do |cat| %>
-      <div class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-      url('<%= cl_image_path cat.photo, crop: :fit %>')">
+      <div class="card-category mb-3">
         <li>
           <h2><%= cat.name %></h2>
           <p>
