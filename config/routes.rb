@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   resources :bookings, only: [:index, :create]
   resources :user do
-    resources :cats, only: [:index, :show]
+    resources :cats, only: [:index, :show, :create]
   end
-
-
 
   resources :cats
 
