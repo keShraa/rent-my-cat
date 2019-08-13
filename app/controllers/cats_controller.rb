@@ -4,7 +4,7 @@ class CatsController < ApplicationController
 
   def index
     @user = current_user
-    @cats = @user.cats
+    @cats = Cat.all
   end
 
   def show
