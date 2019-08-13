@@ -31,3 +31,5 @@ group :development, :test do
   gem 'dotenv-rails'
   gem "pundit"
 end
+
+gem 'dotenv-rails', groups: [:development, :test]
