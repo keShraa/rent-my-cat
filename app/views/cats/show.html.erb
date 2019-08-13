@@ -26,7 +26,10 @@
         <% end %>
         <small><em><%= @cat.address %> - <%= @cat.age %> years old</em></small>
     </h2>
-    <h2><%= @cat.price_per_day %>€</h2>
+    <div class="d-flex align-items-end">
+      <h2><%= @cat.price_per_day %>€</h2>
+      <%= link_to 'Book this cat', bookings_path, class:'btn btn-dark mx-3' %>
+    </div>
   </div>
 
   <p><%= @cat.description %></p>
