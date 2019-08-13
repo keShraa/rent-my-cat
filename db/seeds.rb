@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Cleaning DB..."
+
 Cat.destroy_all
 User.destroy_all
 Booking.destroy_all
@@ -21,7 +22,7 @@ end
   url = "https://source.unsplash.com/collection/139386/1000x1000/?sig="
   cat = Cat.new(
     name: Faker::Creature::Cat.name,
-    breed: Faker::Creature::Cat.breed,
+    breed: Cat::BREEDS,
     address: ["Bordeaux", "Paris", "Lille", "Marseille", "Lyon", "Nice", "Cannes", "Montpellier", "Dijon", "Metz", "Strasbourg", "Toulouse", "Brest", "Avignon", "Bayonne"].shuffle.first,
     age: rand(1..22),
     user_id: rand(1..25),
