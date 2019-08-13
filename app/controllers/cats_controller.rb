@@ -4,7 +4,7 @@ class CatsController < ApplicationController
 
   def index
     @user = current_user
-    @cats = Cat.all
+    @cats = Cat.where(address: params[:cats][:address])
   end
 
   def show

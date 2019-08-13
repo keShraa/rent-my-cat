@@ -24,7 +24,7 @@ end
   cat = Cat.new(
     name: Faker::Creature::Cat.name,
     breed: Cat::BREEDS.shuffle.first,
-    address: ["Bordeaux", "Paris", "Lille", "Marseille", "Lyon", "Nice"].shuffle.first,
+    address: Cat::CITY.shuffle.first
     age: rand(1..22),
     gender: Cat::GENDER.shuffle.first,
     user_id: rand(1..25),
