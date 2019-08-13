@@ -1,28 +1,28 @@
 <div class="container">
   <h1>Find the cats around you</h1>
   <div class="row">
-    <div class="col">
 
-      <% @cats.each do |cat| %>
-        <div class="card-trip mb-2">
-            <%= link_to cat_path(cat) do %>
-              <%= cl_image_tag cat.photo %>
-            <% end %>
+    <% @cats.each do |cat| %>
+      <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="card-trip mb-4">
+          <%= cl_image_tag cat.photo %>
             <div class="card-trip-infos">
 
               <div>
-                <h2><%= cat.name %></h2>
+                <%= link_to cat_path(cat) do %>
+                  <h2><%= cat.name %></h2>
+                <% end %>
                 <p>
                   <%= cat.address %> - <%= cat.age %> years old<hr>
                   <%= cat.description %>
                 </p>
               </div>
 
-              <h2 class="card-trip-pricing"><%= cat.price_per_day %>€</h2>
+              <h3 class="card-trip-pricing"><%= cat.price_per_day %>€</h3>
             </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-    </div>
   </div>
 </div>
