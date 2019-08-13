@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :bookings, only: [:index, :create]
-  resources :cats, only: [:index]
+  resources :cats
 
 
   devise_for :users
