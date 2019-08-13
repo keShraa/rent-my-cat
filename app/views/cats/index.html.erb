@@ -1,18 +1,28 @@
 <div class="container">
   <h1>Find the cats around you</h1>
   <div class="row">
-    <ul class="list-unstyled col">
-      <% @cats.each do |cat| %>
-      <div class="card-category mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-      url('<%= cl_image_path cat.photo, crop: :fit %>')">
-        <li>
-          <h2><%= cat.name %></h2>
-          <p>
-            <small><%= cat.address %></small>
-          </p>
-        </li>
+
+    <% @cats.each do |cat| %>
+      <div class="col-sm-12 col-md-8 col-lg-6">
+        <div class="card-trip mb-4">
+          <%= cl_image_tag cat.photo %>
+            <div class="card-trip-infos">
+
+              <div>
+                <%= link_to cat_path(cat) do %>
+                  <h2><%= cat.name %></h2>
+                <% end %>
+                <p>
+                  <%= cat.address %> - <%= cat.age %> years old<hr>
+                  <%= cat.description %>
+                </p>
+              </div>
+
+              <h3 class="card-trip-pricing"><%= cat.price_per_day %>€</h3>
+            </div>
+        </div>
       </div>
-      <% end %>
-    </ul>
+    <% end %>
+
   </div>
 </div>

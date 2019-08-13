@@ -7,20 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Cleaning DB..."
+
 User.destroy_all
+
 
 25.times do
   user = User.new(email: Faker::Internet.email, password: "password")
   user.save!
 end
 
-Cat.destroy_all
 
 50.times do
   url = "https://source.unsplash.com/collection/139386/1000x1000/?sig="
   cat = Cat.new(
     name: Faker::Creature::Cat.name,
-    breed: Faker::Creature::Cat.breed,
+    breed: Cat::BREEDS,
     address: ["Bordeaux", "Paris", "Lille", "Marseille", "Lyon", "Nice", "Cannes", "Montpellier", "Dijon", "Metz", "Strasbourg", "Toulouse", "Brest", "Avignon", "Bayonne"].shuffle.first,
     age: rand(1..22),
     user_id: rand(1..25),
