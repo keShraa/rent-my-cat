@@ -3,20 +3,25 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cats = Cat.all
+    @user = current_user
+    @cats = @user.cats
   end
 
   def show
   end
 
   def new
+    @user = current_user
     @cat = Cat.new
   end
 
   def create
+    @user = current_user
     @cat = Cat.new(cat_params)
+    @cat.user = @user
     if @cat.save
-      redirect_to cat_path(@cat)
+      redirect_to "/user/#{@user[:id]}/cats/#{@cat[:id]}"
+      # user_cat_path(@user.@cat)
     else
       render :new
     end
