@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Cleaning DB..."
-
-users = []
+Cat.destroy_all
+User.destroy_all
+Booking.destroy_all
 
 25.times do
   user = User.new(email: Faker::Internet.email, password: "password")
   user.save!
 end
 
-Cat.destroy_all
 
 50.times do
   url = "https://source.unsplash.com/collection/139386/1000x1000/?sig="
