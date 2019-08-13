@@ -3,16 +3,18 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show, :edit, :update, :destroy]
 
   def index
+    @cats = policy_scope(Cat)
     @user = current_user
-    @cats = Cat.all
   end
 
   def show
+    authorize @cat
   end
 
   def new
     @user = current_user
     @cat = Cat.new
+    authorize @cat
   end
 
   def create
