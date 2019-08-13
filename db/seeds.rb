@@ -8,9 +8,8 @@
 
 puts "Cleaning DB..."
 
-Cat.destroy_all
 User.destroy_all
-Booking.destroy_all
+
 
 25.times do
   user = User.new(email: Faker::Internet.email, password: "password")
