@@ -6,16 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "Cleaning DB..."
-
-User.destroy_all
-Cat.destroy_all
-Booking.destroy_all
-
-
 25.times do
   user = User.new(email: Faker::Internet.email, password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
   user.save!
+  puts "#{user.first_name} saved !"
 end
 
 
@@ -33,6 +27,7 @@ end
     )
   cat.remote_photo_url = url
   cat.save!
+  puts "#{cat.name} saved !"
 end
 
 puts "Cats created!"

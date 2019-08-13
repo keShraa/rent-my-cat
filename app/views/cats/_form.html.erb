@@ -1,4 +1,4 @@
-<%= simple_form_for [@user, @cat] do |f| %>
+<%= simple_form_for [@cat] do |f| %>
   <%= f.input :name %>
   <%= f.input :breed, collection: Cat::BREEDS %>
   <%= f.input :age %>
