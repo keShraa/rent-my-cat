@@ -1,8 +1,9 @@
 .card-trip {
-  overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   opacity: 0.9;
+  position: relative;
+
 }
 
 .card-trip > img {
@@ -71,3 +72,14 @@
   padding: 36px;
   background-color: #EEEEEE;
 }
+
+.cross {
+  font-size: 24px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  color: $red;
+  background-color: white;
+  border-radius: 50%;
+}
+

@@ -62,6 +62,7 @@ class CatsController < ApplicationController
   end
 
   def destroy
+    authorize @cat
     @cat.destroy
     redirect_to cats_path
   end
