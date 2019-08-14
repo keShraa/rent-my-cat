@@ -1,29 +1,27 @@
 class CatsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_cat, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_cat, only: %i[show edit update destroy]
+
+  def markers
+    @markers = @cats.map do |cat|
+      {
+        lat: cat.latitude,
+        lng: cat.longitude
+      }
+    end
+  end
 
   def index
     @cats = policy_scope(Cat)
     @user = current_user
-    unless params[:cats][:address] == ""
-      @cats = Cat.where(address: params[:cats][:address])
-      # @cats = Cat.geocoded #returns cats with coordinates
-      @markers = @cats.map do |cat|
-        {
-          lat: cat.latitude,
-          lng: cat.longitude
-        }
-      end
-    else
+    if params[:cats][:address] == ""
       @cats = Cat.all
       # @cats = Cat.geocoded #returns cats with coordinates
-      @markers = @cats.map do |cat|
-        {
-          lat: cat.latitude,
-          lng: cat.longitude
-        }
-      end
+    else
+      @cats = Cat.where(address: params[:cats][:address])
+      # @cats = Cat.geocoded #returns cats with coordinates
     end
+    markers
   end
 
   def show
@@ -63,7 +61,7 @@ class CatsController < ApplicationController
 
   def destroy
     @cat.destroy
-    redirect_to cats_path
+    redirect_to user_path(user.cat_id)
   end
 
   private
@@ -75,16 +73,4 @@ class CatsController < ApplicationController
   def set_cat
     @cat = Cat.find(params[:id])
   end
-
-  def make_markers(cats)
-    # @cats = Cat.geocoded #returns cats with coordinates
-    markers = cats.map do |cat|
-    {
-      lat: cat.latitude,
-      lng: cat.longitude
-    }
-    return markers
-  end
-end
-
 end
