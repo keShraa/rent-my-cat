@@ -60,9 +60,10 @@ class CatsController < ApplicationController
   end
 
   def destroy
+    @user = current_user
     authorize @cat
     @cat.destroy
-    redirect_to user_path(user.cat_id)
+    redirect_to user_path(@user)
   end
 
   private
