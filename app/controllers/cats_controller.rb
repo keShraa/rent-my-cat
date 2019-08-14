@@ -5,7 +5,11 @@ class CatsController < ApplicationController
   def index
     @cats = policy_scope(Cat)
     @user = current_user
-    # @cats = Cat.where(address: params[:cats][:address])
+    unless params[:cats][:address] == ""
+      @cats = Cat.where(address: params[:cats][:address])
+    else
+      @cats = Cat.all
+    end
   end
 
   def show
