@@ -3,19 +3,17 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cats = Cat.geocoded #returns cats with coordinates
-
-    @markers = @cats.map do |cat|
+    @cats = policy_scope(Cat)
+    @user = current_user
+    unless params[:cats][:address] == ""
+      @cats = Cat.where(address: params[:cats][:address])
+      # @cats = Cat.geocoded #returns cats with coordinates
+      @markers = @cats.map do |cat|
       {
         lat: cat.latitude,
         lng: cat.longitude
       }
     end
-
-    @cats = policy_scope(Cat)
-    @user = current_user
-    unless params[:cats][:address] == ""
-      @cats = Cat.where(address: params[:cats][:address])
     else
       @cats = Cat.all
     end
