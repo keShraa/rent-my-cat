@@ -3,7 +3,7 @@
   <div class="row">
     <% @bookings.each do |booking| %>
       <div class="col-sm-12 col-md-8 col-lg-6 card-link">
-        <%= link_to cat_path(booking.cat) do %>
+        <%= link_to booking_path(booking) do %>
         <div class="card-trip mb-4">
           <%= cl_image_tag booking.cat.photo %>
           <div class="card-trip-infos d-flex flex-column">
