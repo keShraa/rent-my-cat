@@ -9,28 +9,22 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to user_path(current_user.id) do %>
-            <%= cl_image_tag current_user.photo, class: "avatar" %>
-            <%= current_user.first_name.capitalize %>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-secondary") %>
-        </li>
+        <ul class="inline">
+          <li class="welcome">
+            Welcome <strong><%= current_user.first_name.capitalize %></strong>
+          </li>
+           <li class="nav-item dropdown">
+            <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
+                <%= link_to "My bookings", bookings_path(@booking), class: "dropdown-item" %>
+                <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger") %>
+              </div>
+           </li>
+        </ul>
       <% else %>
-        <li>
-          <%= link_to('Login', new_user_session_path, class: "btn btn-secondary") %>
-        </li>
+        <%= link_to('Login', new_user_session_path, class: "btn btn-secondary px-4") %>
       <% end %>
-      <li class="nav-item dropdown">
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <%= link_to "Action", "#", class: "dropdown-item" %>
-          <%= link_to "Another action", "#", class: "dropdown-item" %>
-        </div>
-      </li>
-    </ul>
   </div>
 </div>
