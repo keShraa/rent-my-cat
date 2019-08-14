@@ -3,6 +3,9 @@
     <div class="carousel-item active">
       <%= cl_image_tag @cat.photo, class:"d-block w-100" %>
     </div>
+    <div class="carousel-item">
+      <%= cl_image_tag @cat.photo, class:"d-block w-100" %>
+    </div>
   </div>
   <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -26,8 +29,12 @@
         <i class="fas fa-venus"></i>
       <% end %>
       <%= @cat.breed %> <br>
-      <%= @cat.address %> - <%= @cat.age %> years old <br>
-    </em></p>
+      <%= @cat.address %> - <%= @cat.age %> years old</em> <br>
+
+      <%= link_to user_path(User.find(@cat.user_id)), class:'btn btn-outline-dark mt-3' do %>
+        <i class="fas fa-paw"></i> <%= User.find(@cat.user_id).first_name %>'s profile
+      <% end %>
+    </p>
     </div>
     <div class="d-flex align-items-end">
       <h2><%= @cat.price_per_day %>€ <small>per day</small></h2>
