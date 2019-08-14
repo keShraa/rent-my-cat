@@ -9,20 +9,20 @@ class CatsController < ApplicationController
       @cats = Cat.where(address: params[:cats][:address])
       # @cats = Cat.geocoded #returns cats with coordinates
       @markers = @cats.map do |cat|
-      {
-        lat: cat.latitude,
-        lng: cat.longitude
-      }
-    end
+        {
+          lat: cat.latitude,
+          lng: cat.longitude
+        }
+      end
     else
       @cats = Cat.all
       # @cats = Cat.geocoded #returns cats with coordinates
       @markers = @cats.map do |cat|
-      {
-        lat: cat.latitude,
-        lng: cat.longitude
-      }
-    end
+        {
+          lat: cat.latitude,
+          lng: cat.longitude
+        }
+      end
     end
   end
 
