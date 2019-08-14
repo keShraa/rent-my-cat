@@ -33,9 +33,9 @@
     <div class="d-flex align-items-end">
       <h2>Total to pay: <%= @booking.total_price %>€ </h2>
       <% if current_user.nil? || current_user.id != @booking.cat.user_id %>
-        <%= link_to 'Cancel this booking', new_cat_booking_path(@booking.cat), class:'btn btn-dark ml-3' %>
+        <%= link_to 'Cancel this booking', booking_path(@booking), method:'delete', class:'btn btn-dark ml-3' %>
       <% else %>
-        <%= link_to 'Cancel this booking', edit_cat_path(@booking.cat), class:'btn btn-dark ml-3' %>
+        <%= link_to 'Cancel this booking', booking_path(@booking), method:'delete', class:'btn btn-dark ml-3' %>
       <% end %>
     </div>
   </div>
