@@ -17,20 +17,28 @@
 <div class="container mt-4">
   <h1>Welcome to <%= @cat.name %>'s page <i class="fas fa-cat"></i></h1>
 
-  <div class="d-flex justify-content-between">
-    <h2>
+  <div class="d-flex justify-content-between align-items-start">
+    <div>
+      <p><em>
       <% if @cat.breed == 'Male' %>
         <i class="fas fa-mars"></i>
       <% else %>
         <i class="fas fa-venus"></i>
-        <% end %>
-        <small><em><%= @cat.address %> - <%= @cat.age %> years old</em></small>
-    </h2>
+      <% end %>
+      <%= @cat.breed %> <br>
+      <%= @cat.address %> - <%= @cat.age %> years old <br>
+    </em></p>
+    </div>
     <div class="d-flex align-items-end">
-      <h2><%= @cat.price_per_day %>€</h2>
-      <%= link_to 'Book this cat', new_cat_booking_path(@cat), class:'btn btn-dark mx-3' %>
+      <h2><%= @cat.price_per_day %>€ <small>per day</small></h2>
+      <% if current_user.id == @cat.user_id %>
+        <%= link_to 'Edit your cat', edit_cat_path(@cat), class:'btn btn-dark ml-3' %>
+      <% else %>
+        <%= link_to 'Book this cat', new_cat_booking_path(@cat), class:'btn btn-dark ml-3' %>
+      <% end %>
     </div>
   </div>
+  <hr>
 
   <p><%= @cat.description %></p>
 </div>
