@@ -5,10 +5,17 @@ class CatsController < ApplicationController
   def index
     @cats = policy_scope(Cat)
     @user = current_user
-    if params[:cats][:address] == ""
-      @cats = Cat.all
-    else
+    unless params[:cats][:address] == ""
       @cats = Cat.where(address: params[:cats][:address])
+      # @cats = Cat.geocoded #returns cats with coordinates
+      @markers = @cats.map do |cat|
+      {
+        lat: cat.latitude,
+        lng: cat.longitude
+      }
+    end
+    else
+      @cats = Cat.all
     end
   end
 
