@@ -1,10 +1,11 @@
 <div class="container">
+  <h2 class="mt-4">Rent my cat <i class="fas fa-cat"></i></h2>
   <%= simple_form_for [@cat] do |f| %>
     <%= f.input :name %>
     <%= f.input :breed, collection: Cat::BREEDS %>
     <%= f.input :age %>
     <%= f.input :gender, collection: Cat::GENDER, as: :radio_buttons %>
-    <%= f.input :address, collection: Cat::CITY %>
+    <%= f.input :address %>
     <%= f.input :price_per_day %>
     <%= f.input :description %>
     <%= f.input :photo %>
