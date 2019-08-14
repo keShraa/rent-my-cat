@@ -16,6 +16,13 @@ class CatsController < ApplicationController
     end
     else
       @cats = Cat.all
+      # @cats = Cat.geocoded #returns cats with coordinates
+      @markers = @cats.map do |cat|
+      {
+        lat: cat.latitude,
+        lng: cat.longitude
+      }
+    end
     end
   end
 
@@ -68,4 +75,16 @@ class CatsController < ApplicationController
   def set_cat
     @cat = Cat.find(params[:id])
   end
+
+  def make_markers(cats)
+    # @cats = Cat.geocoded #returns cats with coordinates
+    markers = cats.map do |cat|
+    {
+      lat: cat.latitude,
+      lng: cat.longitude
+    }
+    return markers
+  end
+end
+
 end
