@@ -42,9 +42,11 @@ class CatsController < ApplicationController
   end
 
   def edit
+    authorize @cat
   end
 
   def update
+    authorize @cat
     if @cat.update(cat_params)
       redirect_to cat_path(@cat)
     else
