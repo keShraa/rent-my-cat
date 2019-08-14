@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Enjoy <%= @cat.name %>'s company</h1>
   <%= simple_form_for [@cat, @booking] do |f| %>
-    <%= f.input :starting_date %>
-    <%= f.input :ending_date %>
+    <%= f.input :starting_date, :as => :date, :start_year => Date.today.year %>
+    <%= f.input :ending_date, :as => :date, :start_year => Date.today.year %>
     <%= f.submit "Submit reservation", class: "btn btn-dark" %>
   <% end %>
 </div>
