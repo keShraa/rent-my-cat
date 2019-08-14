@@ -1,10 +1,5 @@
-<<<<<<< HEAD:app/controllers/user_controller.rb
-class UserController < ApplicationController
-    skip_before_action :authenticate_user!
-
-=======
 class UsersController < ApplicationController
->>>>>>> 490fbe4282ce2fdabb56554f6ab7a3ed6edd15f2:app/controllers/users_controller.rb
+  skip_before_action :authenticate_user!
   def show
     @user = current_user
     authorize @user
