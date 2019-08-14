@@ -1,5 +1,6 @@
 <% @bookings.each do |booking| %>
   <div class="container">
-    <h3>Booking du <%= "#{booking.starting_date} au #{booking.ending_date}, avec le chat #{booking.cat.name}" %></h3>
+    <h2>Your bookings :</h2>
+    <h3>Date : <%= "#{booking.starting_date}" %> au <%= "#{booking.ending_date}" %>, avec le chat : <%= link_to "#{booking.cat.name}", cat_path(booking.cat.id) %>. Total cost : <%= "#{booking.total_price}" %>€</h3>
   </div>
 <% end %>
