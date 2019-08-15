@@ -10,6 +10,7 @@ class CatsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { cat: cat })
       }
     end
+    return @markers
   end
 
   def index
@@ -18,11 +19,13 @@ class CatsController < ApplicationController
     if params[:cats][:address] == ""
       @cats = Cat.all
       # @cats = Cat.geocoded #returns cats with coordinates
+      @marker = markers
     else
-      @cats = Cat.where(address: params[:cats][:address])
+      # @cats = Cat.where(address: params[:cats][:address])
       # @cats = Cat.geocoded #returns cats with coordinates
+      @cats = Cat.near(params[:cats][:address], 10)
+      @marker = markers
     end
-    markers
   end
 
   def show
