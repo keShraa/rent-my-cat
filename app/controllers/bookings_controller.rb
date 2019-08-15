@@ -24,9 +24,26 @@ class BookingsController < ApplicationController
     @booking.total_price = @cat.price_per_day * (@booking.ending_date - @booking.starting_date).to_i
     @booking.user = current_user
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to edit_booking_path(@booking)
     else
       render :new
+    end
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.paid = true
+    @booking.save
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :edit
     end
   end
 

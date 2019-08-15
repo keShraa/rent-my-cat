@@ -3,6 +3,6 @@
   <%= simple_form_for [@cat, @booking] do |f| %>
     <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker"} %>
     <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-    <%= f.submit "Submit reservation", class: "btn btn-dark" %>
+    <%= f.submit "Book #{@cat.name}", class: "btn btn-dark" %>
   <% end %>
 </div>

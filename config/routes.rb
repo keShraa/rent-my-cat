@@ -3,9 +3,13 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :bookings, only: [:index, :show, :destroy]
+  resources :bookings, only: [:index, :show, :destroy, :edit, :update]
   resources :cats do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create] do
+      member do
+        get 'payment'
+      end
+    end
   end
   resources :users, only: [:show, :edit, :update]
 
