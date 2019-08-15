@@ -1,0 +1,9 @@
+<%= link_to cat_path(cat) do %>
+  <%= cl_image_tag cat.photo %>
+  <h2 class="m-0"><%= cat.name %></h2>
+  <p class="m-0">
+    <%= cat.address %> <br class="m-0">
+    breed <strong><%= cat.breed %></strong> -
+    <%= cat.age %> years old
+  </p>
+<% end %>
