@@ -9,7 +9,7 @@
     <hr>
 
   <div class="form-group card-form">
-    <%= simple_form_for :cats, url: cats_path, method: "GET" do |f| %>
+    <%= simple_form_for :query, url: cats_path, method: "GET" do |f| %>
       <%= f.input :address, :label => "Where do you want to rent a cat ?" %>
       <%= f.input :starting_date, :as => :string, :start_year => Date.today.year, required: false, input_html: {class: "datepicker"} %>
       <%= f.input :ending_date, :as => :string, :start_year => Date.today.year, required: false, input_html: {class: "datepicker"} %>

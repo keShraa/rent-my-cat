@@ -16,14 +16,14 @@ class CatsController < ApplicationController
   def index
     @cats = policy_scope(Cat)
     @user = current_user
-    if params[:cats][:address] == ""
+    if params[:query][:address] == ""
       @cats = Cat.all
       # @cats = Cat.geocoded #returns cats with coordinates
       @marker = markers
     else
       # @cats = Cat.where(address: params[:cats][:address])
       # @cats = Cat.geocoded #returns cats with coordinates
-      @cats = Cat.near(params[:cats][:address], 30)
+      @cats = Cat.near(params[:query][:address], 30)
       @marker = markers
     end
   end
