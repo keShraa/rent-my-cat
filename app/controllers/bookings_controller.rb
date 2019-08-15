@@ -2,6 +2,21 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     @bookings = Booking.where("user_id = #{current_user.id}")
+    @bookings_for_cat_owner = []
+    @refused_booking = []
+    @accepted_booking = []
+    user_cats = current_user.cats
+    user_cats.each do |cat|
+      cat.booking.each do |booking|
+        if booking.status == "refused"
+          @refused_booking << booking
+        elsif booking.status == "pending"
+          @bookings_for_cat_owner << booking
+        elsif booking.status == "accepted"
+          @accepted_booking << booking
+        end
+      end
+    end
   end
 
   def show
@@ -52,6 +67,20 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.delete
     redirect_to bookings_path
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(status: "accepted")
+    redirect_to booking_path(@booking)
+  end
+
+  def refuse
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(status: "refused")
+    redirect_to booking_path(@booking)
   end
 
   private

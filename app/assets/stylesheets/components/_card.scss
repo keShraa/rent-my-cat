@@ -6,10 +6,11 @@
 
 }
 
-.card-trip > img {
+.card-trip img {
   height: 280px;
   width: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .card-link a {
