@@ -7,7 +7,8 @@ class CatsController < ApplicationController
       {
         lat: cat.latitude,
         lng: cat.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { cat: cat })
+        infoWindow: render_to_string(partial: "info_window", locals: { cat: cat }),
+        image_url: helpers.asset_url('cat-marker001.png')
       }
     end
     return @markers
@@ -16,15 +17,16 @@ class CatsController < ApplicationController
   def index
     @cats = policy_scope(Cat)
     @user = current_user
-    if params[:cats][:address] == ""
+    if params[:query][:address] == ""
       @cats = Cat.all
-      # @cats = Cat.geocoded #returns cats with coordinates
       @marker = markers
     else
-      # @cats = Cat.where(address: params[:cats][:address])
-      # @cats = Cat.geocoded #returns cats with coordinates
-      @cats = Cat.near(params[:cats][:address], 30)
+      @cats = Cat.near(params[:query][:address], 30)
       @marker = markers
+      if @marker.empty?
+        @cats = Cat.all
+        @marker = markers
+      end
     end
   end
 

@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_many :cats
   has_many :booking, dependent: :destroy
+  has_many :messages, dependent: :destroy
 end
