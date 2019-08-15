@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     @accepted_booking = []
     user_cats = current_user.cats
     user_cats.each do |cat|
-      cat.booking.each do |booking|
+      cat.bookings.each do |booking|
         if booking.status == "refused"
           @refused_booking << booking
         elsif booking.status == "pending"

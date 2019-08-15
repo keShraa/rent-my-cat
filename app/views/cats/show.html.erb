@@ -40,6 +40,7 @@
       <h2><%= @cat.price_per_day %>€ <small>per day</small></h2>
       <% if current_user.nil? || current_user.id != @cat.user_id %>
         <%= link_to 'Book this cat', new_cat_booking_path(@cat), class:'btn btn-dark ml-3' %>
+        <%= link_to 'Review this cat', new_cat_review_path(@cat), class:'btn btn-outline-dark ml-3' %>
       <% else %>
         <%= link_to 'Edit your cat', edit_cat_path(@cat), class:'btn btn-dark ml-3' %>
       <% end %>
@@ -48,4 +49,29 @@
   <hr>
 
   <p><%= @cat.description %></p>
+
+  <hr>
+
+  <div class="d-flex flex-column-reverse">
+  <% Review.where("cat_id = #{params[:id]}").each do |review| %>
+    <p>
+    <blockquote>
+      <div class="d-flex justify-content-between">
+        <%= User.find(review.user_id).first_name %>
+        <div>
+          <% review.rating.to_i.times do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% (5 - review.rating.to_i).times do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <hr>
+      <em>"<%= review["description"] %>"</em>
+    </blockquote>
+    </p>
+  <% end %>
+  </div>
 </div>
