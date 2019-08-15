@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-inline">
+  <div class="d-flex justify-content-center">
     <%= image_tag("visa.png") %>
   </div>
 
@@ -13,6 +13,7 @@
                                 order: [:month, :year], label: "Expiry Date" %>
     <%= f.input :security_code, label: "CVV", class: "SecuCode"%>
     <%= f.submit "Book #{@booking.cat.name}", class: "btn btn-dark"%>
+    <%= link_to "Back to #{@booking.cat.name}", cat_path(@booking.cat), class: 'btn btn-outline-dark' %>
   <% end %>
 </div>
 
