@@ -4,3 +4,26 @@
   right: 16px;
   z-index: 1000;
 }
+
+.status {
+  background-color: #EEEEEE;
+  border-radius: 8px;
+  padding: 4px;
+  text-align: center;
+  width: 50vh;
+}
+
+.accepted {
+  color: $green;
+  border: 2px solid $green;
+}
+
+.refused {
+  color: $red;
+  border: 2px solid $red;
+}
+
+.pending {
+  color: $orange;
+  border: 2px solid $orange;
+}
