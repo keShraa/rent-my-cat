@@ -74,14 +74,32 @@ addresses.each do |address|
   puts "[#{cpt}/#{addresses.length}] Saved new cat : #{Cat.last.name}, #{Cat.last.gender}, owned by #{Cat.last.user.first_name}"
 end
 
-owner = User.create(email: "owner@exemple.com", password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
-booker = User.create(email: "booker@exemple.com", password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
+owner = User.create(email: "exemple@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
 
-# 7.times do
-#   new_cat = make_cat("18 Rue de la Boétie 33000 Bordeaux", breeds, users, genders)
-#   puts new_cat.user
-#   new_cat.user = owner
-#   new_cat.save!
-# end
+cpt = 1
+times = 7
+times.times do
+  url = "https://source.unsplash.com/collection/139386/100x100/?sig="
+  new_cat = Cat.new()
+  new_cat.name = generate_random_name
+  new_cat.description = generate_description
+  new_cat.address = "18 Rue de la Boétie 33000 Bordeaux"
+  new_cat.breed = breeds.sample
+  new_cat.age = generate_random_age
+  new_cat.price_per_day = generate_random_price
+  new_cat.user = owner
+  # new_cat.remote_photo_url = url
+  new_cat.gender = genders.sample
+  new_cat.save!
+  cpt += 1
+  clear
+  puts "Creating cats of test-owner..."
+  puts "[#{cpt}/#{times}] Saved new cat : #{new_cat.name}, #{new_cat.gender}, owned by #{new_cat.user.first_name}"
+end
 
 clear
+
+puts "Testing owner account informations:"
+puts ""
+puts "email: exemple@exemple.com"
+puts "password: 123456"
