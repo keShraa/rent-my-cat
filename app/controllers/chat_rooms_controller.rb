@@ -4,21 +4,13 @@ class ChatRoomsController < ApplicationController
     authorize @chat_room
   end
 
-  def new
-    @chat_room = ChatRoom.new
-    authorize @chat_room
-  end
-
   def create
-    @chat_room = ChatRoom.new(chatroom_params)
+    @chat_room = ChatRoom.new
+    @chat_room.name = "Conversation with: "
     authorize @chat_room
     @chat_room.save
     redirect_to chat_room_path(@chat_room)
   end
 
   private
-
-  def chatroom_params
-    params.require(:chat_room).permit(:name)
-  end
 end
