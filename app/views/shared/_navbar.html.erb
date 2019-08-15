@@ -6,7 +6,7 @@
     <% end %>
 
     <%= simple_form_for :query, url: cats_path, method: "GET", :html => {:class => "form-inline"} do |f| %>
-      <%= f.input :address, label: false, placeholder: 'Search for a city' %>
+      <%= f.input :address, label: false, placeholder: 'Search for a city', input_html: { id: "flat_address" } %>
       <%= f.submit "Search", class: "btn btn-dark px-4" %>
     <% end %>
 
