@@ -3,10 +3,18 @@ class BookingsController < ApplicationController
     @bookings = policy_scope(Booking)
     @bookings = Booking.where("user_id = #{current_user.id}")
     @bookings_for_cat_owner = []
+    @refused_booking = []
+    @accepted_booking = []
     user_cats = current_user.cats
     user_cats.each do |cat|
       cat.booking.each do |booking|
-        @bookings_for_cat_owner << booking
+        if booking.status == "refused"
+          @refused_booking << booking
+        elsif booking.status == "pending"
+          @bookings_for_cat_owner << booking
+        elsif booking.status == "accepted"
+          @accepted_booking << booking
+        end
       end
     end
   end
