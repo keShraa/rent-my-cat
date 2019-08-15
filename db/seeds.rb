@@ -76,7 +76,8 @@ addresses.each do |address|
   puts "[#{cpt}/#{addresses.length}] Saved new cat : #{Cat.last.name}, #{Cat.last.gender}, owned by #{Cat.last.user.first_name}"
 end
 
-owner = User.create(email: "exemple@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
+owner = User.create(email: "owner@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
+owner = User.create(email: "booker@exemple.com", password: "123456", first_name: "Jean-Serge", last_name: Faker::Name.last_name, age: rand(18..99))
 
 cpt = 1
 times = 7
@@ -101,8 +102,13 @@ end
 
 clear
 
-puts "Testing owner account informations:"
+puts "Testing account informations:"
 puts ""
-puts "email: exemple@exemple.com"
+puts "Owner (7 cats)"
+puts "email: owner@exemple.com"
 puts "password: 123456"
 puts ""
+puts "Booker (Has to do booking yet)"
+puts "email: booker@exemple.com"
+puts "password: 123456"
+
