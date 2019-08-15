@@ -35,9 +35,14 @@
 
       <% if current_user.id != @booking.cat.user_id %>
         <%= link_to 'Cancel this booking', booking_path(@booking), method:'delete', class:'btn btn-dark ml-3' %>
+
       <% elsif current_user.id = @booking.cat.user_id && @booking.status == "pending" %>
-        <%= link_to 'Accept', booking_path(@booking), method:'delete', class:'btn btn-success ml-3' %>
-        <%= link_to 'Refuse', booking_path(@booking), method:'delete', class:'btn btn-danger ml-3' %>
+        <%= link_to 'Accept', accept_booking_path(@booking), method:'patch', class:'btn btn-primary ml-3' %>
+        <%= link_to 'Refuse', refuse_booking_path(@booking), method:'patch', class:'btn btn-dark ml-3' %>
+
+      <% elsif current_user.id = @booking.cat.user_id && @booking.status == "accepted" %>
+        <%= link_to 'Cancel this booking', booking_path(@booking), method:'delete', class:'btn btn-dark ml-3' %>
+
       <% end %>
 
     </div>
