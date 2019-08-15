@@ -1,56 +1,74 @@
 <div class="container">
- <div class="d-flex justify-content-around align-items-end mt-4">
-   <!-- @user.avatar -->
-   <%= cl_image_tag @user.photo, class:"avatar-large" %>
-   <div class="d-flex flex-column w-50">
-   <div class="user-infos">
-     <ul class="list-unstyled">
-       <li><strong>First name</strong> <%= @user.first_name %></li>
-       <li><strong>Last name</strong> <%= @user.last_name %></li>
-       <li><strong>Address</strong> <%= @user.address %></li>
-       <li><strong>Age</strong> <%= @user.age %></li>
-       <li><strong>Email</strong> <%= @user.email %></li>
-     </ul>
-   </div>
-   <div class="align-self-end mt-2">
-     <% if current_user == @user %>
-     <%= link_to 'Add a cat', new_cat_path, class:'btn btn-dark' %>
-     <%= link_to 'My bookings', bookings_path, class:'btn btn-outline-dark' %>
-     <%= link_to 'Edit my profile', edit_user_path, class:'btn btn-outline-dark' %>
-     <% end %>
-   </div>
-   </div>
- </div>
-<hr>
-<div class="container">
- <h2 class="mt-3"><%= @user.first_name %>'s cats</h2>
- <div class="row">
-   <% @cats.each do |cat| %>
-     <div class="col-sm-12 col-md-8 col-lg-6 card-link">
-       <%= link_to cat_path(cat) do %>
-       <div class="card-trip mb-4">
-          <%= link_to cat_path(cat), method: :delete do %>
-            <i class="fas fa-times-circle cross"></i>
-        <% end %>
-        <%= cl_image_tag cat.photo %>
-          <div class="card-trip-infos d-flex flex-column">
-            <div class="w-100">
-              <h2><%= cat.name %>
-              <% if cat.gender == 'Male' %>
-                <i class="fas fa-mars"></i>
-              <% else %>
-                <i class="fas fa-venus"></i>
-              <% end %></h2>
-              <p><%= cat.address %> - <%= cat.age %> years old</p>
+    <div class="d-flex justify-content-around align-items-end mt-4">
+        <!-- @user.avatar -->
+        <%= cl_image_tag @user.photo, class:"avatar-large" %>
+        <div class="d-flex flex-column w-50">
+            <div class="user-infos">
+                <ul class="list-unstyled">
+                    <li><strong>First name</strong>
+                        <%= @user.first_name %>
+                    </li>
+                    <li><strong>Last name</strong>
+                        <%= @user.last_name %>
+                    </li>
+                    <li><strong>Address</strong>
+                        <%= @user.address %>
+                    </li>
+                    <li><strong>Age</strong>
+                        <%= @user.age %>
+                    </li>
+                    <li><strong>Email</strong>
+                        <%= @user.email %>
+                    </li>
+                </ul>
             </div>
-            <div class="d-flex justify-content-between align-items-end mt-2 w-100">
-               <%= cat.description %>
-               <h3 class="card-trip-pricing"><%= cat.price_per_day %>€</h3>
-             </div>
-           </div>
-       </div>
-     </div>
-     <% end %>
-   <% end %>
- </div>
-</div>
+            <div class="align-self-end mt-2">
+                <% if current_user == @user %>
+                <%= link_to 'Add a cat', new_cat_path, class:'btn btn-dark' %>
+                <%= link_to 'My bookings', bookings_path, class:'btn btn-outline-dark' %>
+                <%= link_to 'Edit my profile', edit_user_path, class:'btn btn-outline-dark' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <h2 class="mt-3">
+            <%= @user.first_name %>'s cats</h2>
+        <div class="row">
+            <% @cats.each do |cat| %>
+            <div class="col-sm-12 col-md-8 col-lg-6 card-link">
+                <div class="card-trip mb-4">
+                    <% if current_user == @user %>
+                    <%= link_to cat_path(cat), method: :delete do %>
+                    <i class="fas fa-times-circle cross"></i>
+                    <% end %>
+                    <% end %>
+                    <%= link_to cat_path(cat) do %>
+                    <%= cl_image_tag cat.photo %>
+                    <div class="card-trip-infos d-flex flex-column">
+                        <div class="w-100">
+                            <h2>
+                                <%= cat.name %>
+                                <% if cat.gender == 'Male' %>
+                                <i class="fas fa-mars"></i>
+                                <% else %>
+                                <i class="fas fa-venus"></i>
+                                <% end %>
+                            </h2>
+                            <p>
+                                <%= cat.address %> -
+                                <%= cat.age %> years old</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end mt-2 w-100">
+                            <%= cat.description %>
+                            <h3 class="card-trip-pricing">
+                                <%= cat.price_per_day %>€</h3>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
