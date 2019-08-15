@@ -19,7 +19,7 @@ def clear
 end
 
 def make_cat (address, breeds, users, genders)
-  url = "https://source.unsplash.com/collection/139386/1000x1000"
+  url = "https://source.unsplash.com/featured/?cat/1000x1000"
   new_cat = Cat.new()
   new_cat.name = generate_random_name
   new_cat.description = generate_description
@@ -59,30 +59,39 @@ addresses = [
   "1 Rue Guillaume Brochon Bordeaux",
 ]
 
-cpt = 0
-
 users = []
 
-puts "Building users..."
-10.times do
+cpt = 0
+times = 10
+times.times do
+  cpt += 1
   user = User.new(email: Faker::Internet.email, password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
+  puts "[#{cpt}/#{times}] Building users..."
+  user.remote_photo_url = "https://source.unsplash.com/featured/?woman/1000x1000"
   user.save!
   users << user
+  clear
 end
 
+cpt = 0
 addresses.each do |address|
   cpt += 1
   make_cat(address, breeds, users, genders)
   puts "[#{cpt}/#{addresses.length}] Saved new cat : #{Cat.last.name}, #{Cat.last.gender}, owned by #{Cat.last.user.first_name}"
 end
 
-owner = User.create(email: "owner@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
-booker = User.create(email: "booker@exemple.com", password: "123456", first_name: "Jean-Serge", last_name: Faker::Name.last_name, age: rand(18..99))
+puts "Building tests accounts..."
+owner = User.new(email: "owner@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
+booker = User.new(email: "booker@exemple.com", password: "123456", first_name: "Jean-Serge", last_name: Faker::Name.last_name, age: rand(18..99))
+owner.remote_photo_url = "https://source.unsplash.com/featured/?man/1000x1000"
+booker.remote_photo_url = "https://source.unsplash.com/featured/?woman/1000x1000"
+owner.save!
+booker.save!
 
 cpt = 1
 times = 7
 times.times do
-  url = "https://source.unsplash.com/collection/139386/1000x1000"
+  url = "https://source.unsplash.com/featured/?cat/1000x1000"
   new_cat = Cat.new()
   new_cat.name = generate_random_name
   new_cat.description = generate_description
