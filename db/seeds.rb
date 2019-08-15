@@ -19,7 +19,7 @@ def clear
 end
 
 def make_cat (address, breeds, users, genders)
-  url = "https://source.unsplash.com/collection/139386/100x100/?sig="
+  url = "https://source.unsplash.com/collection/139386/1000x1000"
   new_cat = Cat.new()
   new_cat.name = generate_random_name
   new_cat.description = generate_description
@@ -28,7 +28,7 @@ def make_cat (address, breeds, users, genders)
   new_cat.age = generate_random_age
   new_cat.price_per_day = generate_random_price
   new_cat.user = users.sample
-  # new_cat.remote_photo_url = url
+  new_cat.remote_photo_url = url
   new_cat.gender = genders.sample
   new_cat.save!
   clear
@@ -82,7 +82,7 @@ booker = User.create(email: "booker@exemple.com", password: "123456", first_name
 cpt = 1
 times = 7
 times.times do
-  url = "https://source.unsplash.com/collection/139386/100x100/?sig="
+  url = "https://source.unsplash.com/collection/139386/1000x1000"
   new_cat = Cat.new()
   new_cat.name = generate_random_name
   new_cat.description = generate_description
@@ -91,7 +91,7 @@ times.times do
   new_cat.age = generate_random_age
   new_cat.price_per_day = generate_random_price
   new_cat.user = owner
-  # new_cat.remote_photo_url = url
+  new_cat.remote_photo_url = url
   new_cat.gender = genders.sample
   new_cat.save!
   cpt += 1
