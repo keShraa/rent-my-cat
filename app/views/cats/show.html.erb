@@ -28,8 +28,8 @@
       <% else %>
         <i class="fas fa-venus"></i>
       <% end %>
-      <%= @cat.breed %> <br>
-      <%= @cat.address %> - <%= @cat.age %> years old</em> <br>
+      <%= @cat.breed %> - <%= @cat.age %> years old <br>
+      <%= @cat.address %></em> <br>
 
       <%= link_to user_path(User.find(@cat.user_id)), class:'btn btn-outline-dark mt-3' do %>
         <i class="fas fa-user"></i> <%= User.find(@cat.user_id).first_name %>'s profile
@@ -53,7 +53,7 @@
   <hr>
 
   <div class="d-flex flex-column-reverse">
-  <% Review.where("cat_id = #{params[:id]}").each do |review| %>
+  <% Review.where("cat_id = ?", params[:id]).each do |review| %>
     <p>
     <blockquote>
       <div class="d-flex justify-content-between">
