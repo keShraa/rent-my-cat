@@ -2,10 +2,10 @@
   <div id="carousel" class="carousel slide mb-4" data-ride="carousel">
     <div class="carousel-inner carousel-cat" >
       <div class="carousel-item active">
-        <%= cl_image_tag @cat.photo, class:"d-block w-100" %>
+        <%= cl_image_tag @cat.photos.first, class:"d-block w-100" %>
       </div>
       <div class="carousel-item">
-        <%= cl_image_tag @cat.photo, class:"d-block w-100" %>
+        <%= cl_image_tag @cat.photos.last, class:"d-block w-100" %>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">

@@ -45,7 +45,7 @@
             <% end %>
             <% end %>
             <%= link_to cat_path(cat) do %>
-            <%= cl_image_tag cat.photo %>
+            <%= cl_image_tag cat.photos.first %>
             <div class="card-trip-infos d-flex flex-column">
               <div class="w-100">
                 <h2>

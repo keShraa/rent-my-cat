@@ -14,7 +14,7 @@ class Cat < ApplicationRecord
   has_many :booking, dependent: :destroy
   belongs_to :user
   enum status: %i[available unavailable]
-  mount_uploader :photo, PhotoUploader
+  mount_uploaders :photos, PhotoUploader
 
   validates :name, :description, :address, presence: true
   validates :age, presence: true, numericality: { greater_than_or_equal_to: 0 }
