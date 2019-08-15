@@ -17,11 +17,11 @@ class CatsController < ApplicationController
   def index
     @cats = policy_scope(Cat)
     @user = current_user
-    if params[:cats][:address] == ""
+    if params[:query][:address] == ""
       @cats = Cat.all
       @marker = markers
     else
-      @cats = Cat.near(params[:cats][:address], 30)
+      @cats = Cat.near(params[:query][:address], 30)
       @marker = markers
       if @marker.empty?
         @cats = Cat.all
