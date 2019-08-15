@@ -20,7 +20,7 @@
 
   <h1>Welcome to <%= @cat.name %>'s page <i class="fas fa-cat"></i></h1>
 
-  <div class="d-flex justify-content-between align-items-start">
+  <div class="d-flex justify-content-between align-items-end">
     <div>
       <p><em>
       <% if @cat.breed == 'Male' %>
@@ -32,7 +32,7 @@
       <%= @cat.address %> - <%= @cat.age %> years old</em> <br>
 
       <%= link_to user_path(User.find(@cat.user_id)), class:'btn btn-outline-dark mt-3' do %>
-        <i class="fas fa-paw"></i> <%= User.find(@cat.user_id).first_name %>'s profile
+        <i class="fas fa-user"></i> <%= User.find(@cat.user_id).first_name %>'s profile
       <% end %>
     </p>
     </div>

@@ -1,8 +1,29 @@
 <div class="container">
-  <h1>Enjoy <%= @cat.name %>'s company</h1>
+  <h1>Enjoy <%= @cat.name %>'s company</h1> <hr>
+
+  <div class="d-flex justify-content-around">
+    <%= cl_image_tag @cat.photo, class: "avatar-large m-0" %>
+    <div class="ml-5 align-self-center">
+      <p><em>
+      <% if @cat.breed == 'Male' %>
+        <i class="fas fa-mars"></i>
+      <% else %>
+        <i class="fas fa-venus"></i>
+      <% end %>
+      <%= @cat.breed %> <br>
+      <%= @cat.address %> - <%= @cat.age %> years old</em> <br>
+      <%= @cat.description %>
+      </p>
+    </div>
+  </div>
+
+  <hr>
   <%= simple_form_for [@cat, @booking] do |f| %>
     <%= f.input :starting_date, as: :string, required: false, input_html: {class: "datepicker"} %>
     <%= f.input :ending_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-    <%= f.submit "Submit reservation", class: "btn btn-dark" %>
+    <%= f.submit "Book #{@cat.name}", class: "btn btn-dark" %>
+    <%= link_to cat_path(@cat), class:'btn btn-outline-dark' do %>
+      <i class="fas fa-paw"></i> Back to <%= @cat.name %>
+    <% end %>
   <% end %>
 </div>
