@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="d-inline">
+    <%= image_tag("visa.png") %>
+  </div>
+
+<hr>
+
+  <%= simple_form_for(@booking) do |f| %>
+    <%= f.input :total_price, label: "Card Number", :input_html => { :value => "" } %>
+    <%= f.input :name, label: "Card Holder" %>
+     <%= f.input :starting_date, as: :date, start_year: Date.today.year,
+                                end_year: Date.today.year + 10, discard_day: true,
+                                order: [:month, :year], label: "Expiry Date" %>
+    <%= f.input :security_code, label: "CVV", class: "SecuCode"%>
+    <%= f.submit "Book #{@booking.cat.name}", class: "btn btn-dark"%>
+  <% end %>
+</div>
+
