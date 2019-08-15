@@ -1,7 +1,16 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://cdn.iconscout.com/icon/premium/png-256-thumb/cat-455-896812.png", class: "avatar dropdown-toggle" %>
-  <% end %>
+
+  <div class="d-flex">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "https://cdn.iconscout.com/icon/premium/png-256-thumb/cat-455-896812.png", class: "avatar dropdown-toggle" %>
+    <% end %>
+
+    <%= simple_form_for :query, url: cats_path, method: "GET", :html => {:class => "form-inline"} do |f| %>
+      <%= f.input :address, label: false, placeholder: 'Search for a city' %>
+      <%= f.submit "Search", class: "btn btn-dark px-4" %>
+    <% end %>
+
+  </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,3 +37,5 @@
       <% end %>
   </div>
 </div>
+
+
