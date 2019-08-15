@@ -18,7 +18,10 @@
     </a>
   </div>
 
-  <h1>Booking of <%= @booking.cat.name %> <i class="fas fa-cat"></i></h1>
+  <div class="d-flex justify-content-between align-items-end">
+    <h1>Booking of <%= @booking.cat.name %> <i class="fas fa-cat"></i></h1>
+    <%= link_to 'Back', bookings_path, class:'btn btn-dark' %>
+  </div>
   <hr>
 
   <div class="d-flex justify-content-between align-items-stretch mb-4">
