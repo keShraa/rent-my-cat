@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 def generate_random_name
   Faker::Creature::Cat.name
 end
@@ -31,6 +23,8 @@ breed = ["Main Coon", "Bengal", "Birman", "Burmese", "Chartreux",
   "British shorthair", "Himalayen", "Ocicat", "Somali", "Javanais"]
 
 gender = ["Male", "Female"]
+
+# Just add address in the hash bellow. Every address will be allocated a new cat.
 
 addresses = [
   "131 Avenue des Eyquems 33700 Mérignac",
