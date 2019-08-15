@@ -23,7 +23,7 @@ class CatsController < ApplicationController
     else
       # @cats = Cat.where(address: params[:cats][:address])
       # @cats = Cat.geocoded #returns cats with coordinates
-      @cats = Cat.near(params[:cats][:address], 10)
+      @cats = Cat.near(params[:cats][:address], 30)
       @marker = markers
     end
   end
