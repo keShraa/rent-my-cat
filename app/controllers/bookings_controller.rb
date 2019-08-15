@@ -2,6 +2,13 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     @bookings = Booking.where("user_id = #{current_user.id}")
+    @bookings_for_cat_owner = []
+    user_cats = current_user.cats
+    user_cats.each do |cat|
+      cat.booking.each do |booking|
+        @bookings_for_cat_owner << booking
+      end
+    end
   end
 
   def show
