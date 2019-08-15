@@ -25,6 +25,10 @@ class CatsController < ApplicationController
       # @cats = Cat.geocoded #returns cats with coordinates
       @cats = Cat.near(params[:cats][:address], 30)
       @marker = markers
+      if @marker.empty?
+        @cats = Cat.all
+        @marker = markers
+      end
     end
   end
 
