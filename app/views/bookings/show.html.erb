@@ -15,7 +15,7 @@
 </div>
 
 <div class="container mt-4">
-  <h1>Booking of <%= @booking.cat.name %> <i class="fas fa-cat"></i></h1>
+  <h1>Booking of <%= @booking.cat.name %> (<%= @booking.status %>)<i class="fas fa-cat"></i></h1>
 
   <div class="d-flex justify-content-between align-items-start">
     <div>
@@ -32,11 +32,14 @@
     </div>
     <div class="d-flex align-items-end">
       <h2>Total: <%= @booking.total_price %>€ </h2>
+
       <% if current_user.id != @booking.cat.user_id %>
         <%= link_to 'Cancel this booking', booking_path(@booking), method:'delete', class:'btn btn-dark ml-3' %>
-      <% else %>
-        <%= link_to 'Cancel this booking', booking_path(@booking), method:'delete', class:'btn btn-dark ml-3' %>
+      <% elsif current_user.id = @booking.cat.user_id && @booking.status == "pending" %>
+        <%= link_to 'Accept', booking_path(@booking), method:'delete', class:'btn btn-success ml-3' %>
+        <%= link_to 'Refuse', booking_path(@booking), method:'delete', class:'btn btn-danger ml-3' %>
       <% end %>
+
     </div>
   </div>
   <hr>
