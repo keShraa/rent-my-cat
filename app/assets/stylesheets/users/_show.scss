@@ -1,0 +1,10 @@
+.fa-times-circle {
+  opacity: 0;
+}
+
+.card-trip:hover {
+  .fa-times-circle {
+    opacity: 1;
+  }
+}
+
