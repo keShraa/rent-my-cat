@@ -27,12 +27,12 @@
  <div class="row">
    <% @cats.each do |cat| %>
      <div class="col-sm-12 col-md-8 col-lg-6 card-link">
-       <%= link_to cat_path(cat) do %>
        <div class="card-trip mb-4">
           <%= link_to cat_path(cat), method: :delete do %>
             <i class="fas fa-times-circle cross"></i>
-        <% end %>
-        <%= cl_image_tag cat.photo %>
+          <% end %>
+       <%= link_to cat_path(cat) do %>
+          <%= cl_image_tag cat.photo %>
           <div class="card-trip-infos d-flex flex-column">
             <div class="w-100">
               <h2><%= cat.name %>
