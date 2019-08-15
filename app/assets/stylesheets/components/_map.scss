@@ -1,5 +1,31 @@
 #map {
   width: 100%;
-  height: 400px;
+  height: 500px;
   margin-bottom: 32px;
+}
+
+.mapboxgl-popup {
+  width: 400px;
+}
+
+.mapboxgl-popup a {
+  text-decoration: none;
+  color: #202020;
+}
+
+.mapboxgl-popup a:hover {
+  color: #606060;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+}
+
+.mapboxgl-popup img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
 }
