@@ -77,7 +77,7 @@ addresses.each do |address|
 end
 
 owner = User.create(email: "owner@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
-owner = User.create(email: "booker@exemple.com", password: "123456", first_name: "Jean-Serge", last_name: Faker::Name.last_name, age: rand(18..99))
+booker = User.create(email: "booker@exemple.com", password: "123456", first_name: "Jean-Serge", last_name: Faker::Name.last_name, age: rand(18..99))
 
 cpt = 1
 times = 7
