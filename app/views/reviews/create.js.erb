@@ -4,13 +4,16 @@ const refreshForm = (innerHTML) => {
 }
 
 const addReview = (reviewHTML) =>  {
+  event.preventDefault();
   const reviews = document.getElementById('reviews');
   reviews.insertAdjacentHTML('beforeend', reviewHTML);
+  const input = document.querySelector('#review_description');
+  input.value = '';
 }
 
 <% if @review.errors.any? %>
-  refreshForm('<%= j render "reviews/form", cat: @cat, review: @review %>');
+  refreshForm("<%= j render 'reviews/form', cat: @cat, review: @review %>");
 <% else %>
-  addReview('<%= j render "reviews/show", review: @review %>');
-  refreshForm('<%= j render "reviews/form", cat: @cat, review: Review.new %>');
+  addReview("<%= j render 'reviews/show', review: @review %>");
+  refreshForm("<%= j render 'reviews/form', cat: @cat, review: Review.new %>");
 <% end %>
