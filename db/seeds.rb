@@ -65,8 +65,8 @@ cpt = 0
 times = 10
 times.times do
   cpt += 1
-  user = User.new(email: Faker::Internet.email, password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
   puts "[#{cpt}/#{times}] Building users..."
+  user = User.new(email: Faker::Internet.email, password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
   user.remote_photo_url = "https://source.unsplash.com/featured/?woman/1000x1000"
   user.save!
   users << user
@@ -77,6 +77,9 @@ cpt = 0
 addresses.each do |address|
   cpt += 1
   make_cat(address, breeds, users, genders)
+  puts "|\\---/|
+| o_o |
+ \\_^_/"
   puts "[#{cpt}/#{addresses.length}] Saved new cat : #{Cat.last.name}, #{Cat.last.gender}, owned by #{Cat.last.user.first_name}"
 end
 
