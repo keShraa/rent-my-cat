@@ -71,6 +71,14 @@ addresses = [
   "22 Rue du Petit Goave 33000 Bordeaux",
   "19 Avenue Félix Faure Bordeaux",
   "1 Rue Guillaume Brochon Bordeaux",
+  "11 Quai de Bourbon 75004 Paris",
+  "172 Rue de Rivoli 75001 Paris",
+  "2 Avenue de Suffren 75015 Paris",
+  "85 Rue Dupleix 75015 Paris",
+  "138 Rue de Courcelles 75017 Paris",
+  "35 Place des Saisons 92400 Courbevoie",
+  "35 Rue de la Bûcherie 75005 Paris",
+  "10 Rue des Nonnains d'Hyères 75004 Paris",
 ]
 
 users = []
@@ -145,9 +153,6 @@ test_owner_cats.each do |cat|
 end
 
 clear
-
-puts "Testing account informations:"
-puts ""
 puts "Owner (7 cats)"
 puts "email: owner@exemple.com"
 puts "password: 123456"
