@@ -1,0 +1,18 @@
+<p>
+  <blockquote>
+    <div class="d-flex justify-content-between">
+      <%= User.find(review.user_id).first_name %>
+      <div>
+        <% review.rating.to_i.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - review.rating.to_i).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <hr>
+    <em>"<%= review["description"] %>"</em>
+</blockquote>
+</p>

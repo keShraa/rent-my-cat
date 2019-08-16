@@ -1,22 +1,5 @@
 <div class="container">
-  <div id="carousel" class="carousel slide mb-4" data-ride="carousel">
-    <div class="carousel-inner carousel-cat" >
-      <div class="carousel-item active">
-        <%= cl_image_tag @cat.photo, class:"d-block w-100" %>
-      </div>
-      <div class="carousel-item">
-        <%= cl_image_tag @cat.photo, class:"d-block w-100" %>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+  <%= cl_image_tag @cat.photo, class:"d-block w-100 image-cat" %>
 
   <h1>Welcome to <%= @cat.name %>'s page <i class="fas fa-cat"></i></h1>
 
@@ -28,8 +11,8 @@
       <% else %>
         <i class="fas fa-venus"></i>
       <% end %>
-      <%= @cat.breed %> <br>
-      <%= @cat.address %> - <%= @cat.age %> years old</em> <br>
+      <%= @cat.breed %> - <%= @cat.age %> years old <br>
+      <%= @cat.address %></em> <br>
 
       <%= link_to user_path(User.find(@cat.user_id)), class:'btn btn-outline-dark mt-3' do %>
         <i class="fas fa-user"></i> <%= User.find(@cat.user_id).first_name %>'s profile
@@ -40,9 +23,7 @@
       <h2><%= @cat.price_per_day %>€ <small>per day</small></h2>
       <% if current_user.nil? || current_user.id != @cat.user_id %>
         <%= link_to 'Book this cat', new_cat_booking_path(@cat), class:'btn btn-dark ml-3' %>
-
-          <%= link_to 'Review this cat', new_cat_review_path(@cat), class:'btn btn-outline-dark ml-3' %>
-
+        <%= link_to 'Review this cat', cat_path(@cat, anchor: 'review'), class:'btn btn-outline-dark ml-3' %>
       <% else %>
         <%= link_to 'Edit your cat', edit_cat_path(@cat), class:'btn btn-dark ml-3' %>
       <% end %>
@@ -54,26 +35,20 @@
 
   <hr>
 
-  <div class="d-flex flex-column-reverse">
-  <% Review.where("cat_id = #{params[:id]}").each do |review| %>
-    <p>
-    <blockquote>
-      <div class="d-flex justify-content-between">
-        <%= User.find(review.user_id).first_name %>
-        <div>
-          <% review.rating.to_i.times do %>
-            <i class="fas fa-star"></i>
-          <% end %>
-          <% (5 - review.rating.to_i).times do %>
-            <i class="far fa-star"></i>
-          <% end %>
-        </div>
-      </div>
-
-      <hr>
-      <em>"<%= review["description"] %>"</em>
-    </blockquote>
-    </p>
+  <% unless current_user.nil? || current_user.id == @cat.user_id %>
+    <div id="review" class="card-infos mt-5">
+      <h3>Review this cat</h3>
+      <%= render 'reviews/form', cat: @cat, review: @review %>
+    </div>
   <% end %>
+
+  <div id="reviews" class="d-flex flex-column-reverse">
+    <% if @cat.reviews.blank? %>
+      <p class="text-center mt-3 font-italic">Be the first to leave a review for <%= @cat.name %>...</p>
+    <% else %>
+      <% Review.where("cat_id = ?", @cat.id).each do |review| %>
+        <%= render 'reviews/show', review: review %>
+      <% end %>
+    <% end %>
   </div>
 </div>

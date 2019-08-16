@@ -31,7 +31,7 @@ class CatsController < ApplicationController
   end
 
   def show
-
+    @review = Review.new
     authorize @cat
   end
 

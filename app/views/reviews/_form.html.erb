@@ -1,0 +1,5 @@
+<%= simple_form_for([ cat, review ], remote: true) do |f| %>
+  <%= f.input :description %>
+  <%= f.collection_radio_buttons :rating, [[0, "0"], [1, "1"], [2, "2"], [3, "3"], [4, "4"], [5, "5"]], :first, :last %> <br>
+  <%= f.submit "Submit", class: "btn btn-outline-dark" %>
+<% end %>
