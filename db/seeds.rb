@@ -83,7 +83,7 @@ times.times do
   user = User.new(email: Faker::Internet.email, password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
   puts "Downloading image for #{user.first_name}..."
   user.remote_photo_url = "https://source.unsplash.com/featured/?visage/1000x1000"
-  # waiting
+  waiting
   user.save!
   users << user
   clear
@@ -98,7 +98,7 @@ addresses.each do |address|
  \\_^_/
  "
   puts "[#{cpt}/#{addresses.length}] Saved new cat : #{Cat.last.name}, #{Cat.last.gender}, owned by #{Cat.last.user.first_name}"
-  # waiting
+  waiting
 end
 
 puts "\nBuilding tests accounts..."
@@ -130,7 +130,7 @@ times.times do
   clear
   puts "Creating cats of test-owner..."
   puts "[#{cpt}/#{times}] Saved new cat : #{new_cat.name}, #{new_cat.gender}, owned by #{new_cat.user.first_name}"
-  # waiting
+  waiting
 end
 
 clear
