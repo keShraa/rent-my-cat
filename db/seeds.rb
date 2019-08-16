@@ -3,7 +3,7 @@ def generate_random_name
 end
 
 def generate_description
-  Faker::Lorem.sentence(word_count: 10, supplemental: false, random_words_to_add: 10)
+  Faker::Lorem.sentence(word_count: 60, supplemental: false, random_words_to_add: 30)
 end
 
 def generate_random_age
@@ -31,7 +31,21 @@ def make_cat (address, breeds, users, genders)
   new_cat.remote_photo_url = url
   new_cat.gender = genders.sample
   new_cat.save!
+  rand(2..6).times do
+    review = Review.new(description: Faker::Lorem.sentence(word_count: 30, supplemental: false, random_words_to_add: 20), rating: rand(1..5), user: users.sample)
+    review.cat = new_cat
+    review.save
+  end
   clear
+end
+
+def waiting
+  print "\nWaiting 3 seconds."
+  sleep 1
+  print "."
+  sleep 1
+  print "."
+  sleep 1
 end
 
 clear
@@ -67,7 +81,9 @@ times.times do
   cpt += 1
   puts "[#{cpt}/#{times}] Building users..."
   user = User.new(email: Faker::Internet.email, password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
-  user.remote_photo_url = "https://source.unsplash.com/featured/?woman/1000x1000"
+  puts "Downloading image for #{user.first_name}..."
+  user.remote_photo_url = "https://source.unsplash.com/featured/?visage/1000x1000"
+  # waiting
   user.save!
   users << user
   clear
@@ -79,19 +95,22 @@ addresses.each do |address|
   make_cat(address, breeds, users, genders)
   puts "|\\---/|
 | o_o |
- \\_^_/"
+ \\_^_/
+ "
   puts "[#{cpt}/#{addresses.length}] Saved new cat : #{Cat.last.name}, #{Cat.last.gender}, owned by #{Cat.last.user.first_name}"
+  # waiting
 end
 
-puts "Building tests accounts..."
-owner = User.new(email: "owner@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
-booker = User.new(email: "booker@exemple.com", password: "123456", first_name: "Jean-Serge", last_name: Faker::Name.last_name, age: rand(18..99))
-owner.remote_photo_url = "https://source.unsplash.com/featured/?man/1000x1000"
+puts "\nBuilding tests accounts..."
+owner = User.new(address: "18 Rue de la Boétie 33000 Bordeaux", email: "owner@exemple.com", password: "123456", first_name: "Jean-Julien", last_name: Faker::Name.last_name, age: rand(18..99))
+booker = User.new(address: "20 Avenue de la gastronomie asiatique, Bordeaux", email: "booker@exemple.com", password: "123456", first_name: "Jean-Serge", last_name: Faker::Name.last_name, age: rand(18..99))
+owner.remote_photo_url = "https://source.unsplash.com/featured/?visage/1000x1000"
 booker.remote_photo_url = "https://source.unsplash.com/featured/?woman/1000x1000"
 owner.save!
 booker.save!
 
-cpt = 1
+test_owner_cats = []
+cpt = 0
 times = 7
 times.times do
   url = "https://source.unsplash.com/featured/?cat/1000x1000"
@@ -106,10 +125,23 @@ times.times do
   new_cat.remote_photo_url = url
   new_cat.gender = genders.sample
   new_cat.save!
+  test_owner_cats.push(new_cat)
   cpt += 1
   clear
   puts "Creating cats of test-owner..."
   puts "[#{cpt}/#{times}] Saved new cat : #{new_cat.name}, #{new_cat.gender}, owned by #{new_cat.user.first_name}"
+  # waiting
+end
+
+clear
+
+puts "Making random reviews for test-owner's cats..."
+test_owner_cats.each do |cat|
+  rand(2..6).times do
+    review = Review.new(description: Faker::Lorem.sentence(word_count: 30, supplemental: false, random_words_to_add: 20), rating: rand(1..5), user: users.sample)
+    review.cat = cat
+    review.save
+  end
 end
 
 clear
@@ -124,3 +156,5 @@ puts "Booker (Has to do booking yet)"
 puts "email: booker@exemple.com"
 puts "password: 123456"
 puts ""
+
+
