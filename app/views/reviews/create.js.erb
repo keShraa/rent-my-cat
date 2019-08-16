@@ -1,14 +1,12 @@
-const refreshForm = (innerHTML) => {
-  const newReviewForm = document.getElementById('new_review');
+function refreshForm(innerHTML) {
+  var newReviewForm = document.getElementById('new_review');
   newReviewForm.innerHTML = innerHTML;
 }
 
-const addReview = (reviewHTML) =>  {
-  event.preventDefault();
-  const reviews = document.getElementById('reviews');
+function addReview(reviewHTML) {
+  // event.preventDefault();
+  var reviews = document.getElementById('reviews');
   reviews.insertAdjacentHTML('beforeend', reviewHTML);
-  const input = document.querySelector('#review_description');
-  input.value = '';
 }
 
 <% if @review.errors.any? %>
