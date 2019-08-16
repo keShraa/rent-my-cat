@@ -87,13 +87,17 @@ cpt = 0
 times = 10
 times.times do
   cpt += 1
-  puts "[#{cpt}/#{times}] Building users..."
+  print "[#{cpt}/#{times}] Building users..."
   user = User.new(email: Faker::Internet.email, password: "password", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, age: rand(18..99))
-  puts "Downloading image for #{user.first_name}..."
+  print " done\n"
+  print "Downloading image for #{user.first_name}..."
   user.remote_photo_url = "https://source.unsplash.com/featured/?visage/1000x1000"
-  waiting
+  print " done\n"
+  print "saving..."
   user.save!
+  print " done"
   users << user
+  waiting
   clear
 end
 
