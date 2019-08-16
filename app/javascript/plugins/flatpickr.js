@@ -3,7 +3,13 @@ import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
 
-flatpickr("#cats_starting_date", {
+flatpickr("#query_starting_date", {
   altInput: true,
-  plugins: [new rangePlugin({ input: "#cats_ending_date"})]
+  plugins: [new rangePlugin({ input: "#query_ending_date"})]
+})
+
+
+flatpickr("#booking_starting_date", {
+  altInput: true,
+  plugins: [new rangePlugin({ input: "#booking_ending_date"})]
 })
