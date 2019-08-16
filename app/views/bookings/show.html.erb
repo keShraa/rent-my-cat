@@ -69,7 +69,7 @@
         <div class="text-center mt-4">
           <% if current_user.id != @booking.cat.user_id %>
 
-            <%= link_to "Chat with #{User.find(@booking.cat.user_id).first_name}", chat_rooms_path, method:'post', class:'btn btn-outline-dark ml-3' %>
+            <%= button_to "Chat with #{User.find(@booking.cat.user_id).first_name}", booking_chat_rooms_path(@booking), method: :post, class: 'btn btn-outline-dark ml-3' %>
             <%= link_to 'Cancel this booking', booking_path(@booking), method:'delete', class:'btn btn-outline-danger ml-3',
             data: { confirm: 'Are you sure you want to cancel this booking?' } %>
           <% elsif current_user.id == @booking.cat.user_id && @booking.status == "pending" %>

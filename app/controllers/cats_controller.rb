@@ -31,6 +31,7 @@ class CatsController < ApplicationController
   end
 
   def show
+
     authorize @cat
   end
 

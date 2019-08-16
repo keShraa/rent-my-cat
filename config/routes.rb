@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/create'
-  get 'chatrooms/show'
   devise_for :users
 
   root to: 'pages#home'
@@ -10,6 +8,10 @@ Rails.application.routes.draw do
       patch 'accept'
       patch 'refuse'
     end
+    resources :chat_rooms, only: [ :show, :create ] do
+      resources :messages, only: [ :create ]
+  end
+
   end
 
   resources :cats do
@@ -17,9 +19,4 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
   resources :users, only: [:show, :edit, :update]
-
-  resources :chat_rooms, only: [ :show, :create ] do
-    resources :messages, only: [ :create ]
-  end
-
 end
