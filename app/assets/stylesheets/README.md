@@ -57,10 +57,10 @@ Make sure you change the webpack config with the following code to include jQuer
 
 ```js
 // config/webpack/environment.js
-const { environment } = require('@rails/webpacker')
+var { environment } = require('@rails/webpacker')
 
 // Bootstrap 4 has a dependency over jQuery & Popper.js:
-const webpack = require('webpack')
+var webpack = require('webpack')
 environment.plugins.prepend('Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
