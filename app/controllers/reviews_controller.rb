@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
     @review.cat = @cat
     @review.user_id = current_user.id
     authorize @review
-
     if @review.save
       respond_to do |format|
         format.html { redirect_to cat_path(@cat) }
