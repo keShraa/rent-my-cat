@@ -1,4 +1,5 @@
 function insertMessage(message) {
+  event.preventDefault();
   const messagesContainer = document.querySelector('.messages');
   messagesContainer.insertAdjacentHTML('beforeend', message);
   const input = document.querySelector('#message_content');
