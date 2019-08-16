@@ -1,6 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :cat
+  has_one :chat_room
   enum status: %i[pending accepted refused]
 
   validates :starting_date, :ending_date, :total_price, presence: true

@@ -1,9 +1,9 @@
 .messages {
-  font-size: 14px;
+  font-size: 16px;
   widows: 100vh;
-  height: 350px;
+  height: 600px;
   color: #868686;
-  background-color: #ffffff;
+  background-color: #ECE5DD;
   padding: 20px;
   border: 1px solid #ececec;
   border-top: none;
@@ -18,16 +18,23 @@
   margin-bottom: 10px;
   &.right {
     flex-direction: row-reverse;
-    .message-content {
-      background-color: #F2F9FC;
-    }
   }
 }
 .message-content {
-  background-color: #F7F7F7;
-  border-radius: 3px;
-  margin: 0 10px;
-  padding: 11px 10px 8px 10px;
+  &.left {
+    color: black;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    margin: 0 10px;
+    padding: 11px 10px 8px 10px;
+  }
+  &.right {
+    color: black;
+    background-color: #25D366;
+    border-radius: 8px;
+    margin: 0 10px;
+    padding: 11px 10px 8px 10px;
+  }
 }
 .avatar {
   width: 42px;
@@ -58,7 +65,7 @@ input.form-control {
   }
 }
 .chat-header {
-  background-color: #4F2F4C;
+  background-color: #075E54;
   color: white;
   padding: 10px 20px;
   margin-top: 10px;
@@ -72,4 +79,8 @@ input.form-control {
 .chat {
 
   margin-top: 40px;
+}
+
+.police-text {
+  font-size: 14px;
 }
