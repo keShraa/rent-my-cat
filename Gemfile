@@ -17,7 +17,7 @@ gem 'webpacker'
 gem 'faker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'geocoder'
 gem "pundit"
 gem 'sprockets', '>= 3.0.0'
